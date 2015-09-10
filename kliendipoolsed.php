@@ -5,6 +5,6 @@
     <title>Document</title>
 </head>
 <body>
-
+<button onclick="alert('Tere Maailm!')">Tere Maailm</button>
 </body>
 </html>
