@@ -23,8 +23,11 @@
     <button value="green">GREEN</button><br>
     <button value="blue">BLUE</button><br>
     <button id="klick">Luba parem klick</button><br>
-
+    <button id="hide">Rek'i Kass</button>
     <script>
+        $("#hide").click(function(){
+            $("img").toggle();
+        });
         var pklick=false;
         $("#klick").bind("click",function(){
             return pklick=true;
