@@ -1,5 +1,6 @@
 <?php
 $eesn = 'Margo';
 $peren = 'Junker';
-echo $eesn. " " .$peren;
+$vanus = 21;
+echo $eesn. " " .$peren. " (". $vanus .")";
 ?>
