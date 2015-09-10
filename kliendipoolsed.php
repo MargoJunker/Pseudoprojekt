@@ -9,6 +9,13 @@
     $("#pic").attr("src","http://petapixel.com/assets/uploads/2013/06/vtWFwyj.jpg");
     }
     </script>
+    <script>
+        $(document).ready(function(){
+            $(document).on("contextmenu",function(){
+                return false;
+            });
+        })
+    </script>
 </head>
 <body>
     <button onclick="alert('Tere Maailm!')">Tere Maailm</button><br>
