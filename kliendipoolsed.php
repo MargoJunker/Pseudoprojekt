@@ -9,13 +9,6 @@
     $("#pic").attr("src","http://petapixel.com/assets/uploads/2013/06/vtWFwyj.jpg");
     }
     </script>
-    <script>
-        $(document).ready(function(){
-            $(document).on("contextmenu",function(){
-                return false;
-            });
-        })
-    </script>
 </head>
 <body>
     <button onclick="alert('Tere Maailm!')">Tere Maailm</button><br>
@@ -29,7 +22,18 @@
     <button value="red">RED</button><br>
     <button value="green">GREEN</button><br>
     <button value="blue">BLUE</button><br>
+    <button id="klick">Luba parem klick</button><br>
+
     <script>
+        var pklick=false;
+        $("#klick").bind("click",function(){
+            return pklick=true;
+        });
+        $(document).ready(function(){
+            $(document).on("contextmenu",function(){
+                return pklick;
+            });
+        })
         $("button").click(function(){
             $("body").css("background-color",$(this).val());
         })
