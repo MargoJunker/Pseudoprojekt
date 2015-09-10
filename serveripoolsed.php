@@ -1,3 +1,5 @@
 <?php
-echo 'Margo'. " " .'Junker';
+$eesn = 'Margo';
+$peren = 'Junker';
+echo $eesn. " " .$peren;
 ?>
