@@ -7,9 +7,10 @@
 
 <body>
     <?php
-    if(isset($_GET['page']) && file_exists($_GET['page'].".php")){
-        require $_GET['page'].".php";
-    };
+
+    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+        require $page.".php";
+
     ?>
     <p>sakfnsoadng</p>
 </body>
