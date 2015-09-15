@@ -8,7 +8,7 @@
 <body>
     <?php
 
-    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+    $page = isset($_GET['page']) && file_exists($_GET['page'].".php")? $_GET['page'] : 'home';
         require $page.".php";
 
     ?>
