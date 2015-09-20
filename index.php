@@ -1,3 +1,8 @@
+<?php
+
+    $posts = array("title"=>"Man must explore, and this is exploration at its greatest", "subtitle"=>"Problems look mighty small from 150 miles up", "author"=>"Start Bootstrap", "date"=>"September 24, 2014");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,13 +97,13 @@
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
-                            Man must explore, and this is exploration at its greatest
+                            <?=$posts['title']?>
                         </h2>
                         <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
+                            <?=$posts['subtitle']?>
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on </p>
+                    <p class="post-meta">Posted by <a href="#"><?=$posts['author']?></a> on <?=$posts['date']?></p>
                 </div>
                 <hr>
                 <hr>
