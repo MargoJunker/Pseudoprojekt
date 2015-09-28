@@ -1,13 +1,19 @@
 <?php
-
-$post[] = array("Man must explore, and this is exploration at its greatest",
-    "Problems look mighty small from 150 miles up",
-    "Start Bootstrap",
-    "September 24, 2014");
-$post[] = array("I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.",
-    "We predict too much for the next year and yet far too little for the next ten.",
-    "Start Bootstrap",
-    "August 24, 2014");
+$servername="localhost";
+$username="root";
+$password="";
+$dbname="blog";
+$conn = new mysqli($servername, $username, $password,$dbname);
+if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+$sql= "SELECT * FROM POSTS JOIN AUTHORS";
+$result=$conn->query($sql);
+if(mysqli_num_rows($result)>0){
+        while($row=mysqli_fetch_assoc($result)){
+                $posts[]=$row;
+            }
+}
 ?>
 
 <!DOCTYPE html>
@@ -104,22 +110,22 @@ $post[] = array("I believe every human has a finite number of heartbeats. I don'
 
 <!-- Main Content -->
 <div class="container">
-    <?php foreach ($post as $items): ?>
+    <?php foreach ($posts as $post): ?>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
-                            <?php echo "$items[0]"; ?>
+                            <?=$post['title']?>
                         </h2>
 
                         <h3 class="post-subtitle">
-                            <?php echo "$items[1]"; ?>
+                            <?=$post['description']?>
                         </h3>
                     </a>
 
-                    <p class="post-meta">Posted by <a href="#"><?php echo "$items[2]"; ?></a>
-                        on <?php echo "$items[3]"; ?></p>
+                    <p class="post-meta">Posted by <a href="#"><?=$post['name']?></a>
+                        on <?=$post['date']?></p>
                 </div>
                 <hr>
             </div>
