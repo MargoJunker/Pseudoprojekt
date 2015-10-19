@@ -1,13 +1,12 @@
 <?php
 require('config.php');
-$db=mysqli_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_DATABASE) or die(mysqli_error($db));
+$db=mysqli_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_DATABASE) or die('Could not connect!');
 mysqli_query($db,"SET NAMES 'utf8'");
-$q= mysqli_query($db,"SELECT * FROM POSTS JOIN AUTHORS");
+$q= mysqli_query($db,"SELECT * FROM posts JOIN authors");
 while($row=mysqli_fetch_assoc($q)){
     $posts[]=$row;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +27,9 @@ while($row=mysqli_fetch_assoc($q)){
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
-    <link
-        href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-        rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,21 +47,20 @@ while($row=mysqli_fetch_assoc($q)){
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Start Bootstrap</a>
+            <a class="navbar-brand" href="">Start Bootstrap</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="index.php">Home</a>
+                    <a href="">Home</a>
                 </li>
                 <li>
                     <a href="about.html">About</a>
@@ -93,7 +87,7 @@ while($row=mysqli_fetch_assoc($q)){
                 <div class="site-heading">
                     <h1>Clean Blog</h1>
                     <hr class="small">
-                    <span class="subheading">A Clean Blog Theme</span>
+                    <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
                 </div>
             </div>
         </div>
@@ -102,7 +96,7 @@ while($row=mysqli_fetch_assoc($q)){
 
 <!-- Main Content -->
 <div class="container">
-    <?php foreach ($posts as $post): ?>
+    <?foreach($posts as $post):?>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
@@ -110,19 +104,16 @@ while($row=mysqli_fetch_assoc($q)){
                         <h2 class="post-title">
                             <?=$post['title']?>
                         </h2>
-
                         <h3 class="post-subtitle">
                             <?=$post['description']?>
                         </h3>
                     </a>
-
-                    <p class="post-meta">Posted by <a href="#"><?=$post['name']?></a>
-                        on <?=$post['date']?></p>
+                    <p class="post-meta">Posted by <a href="#"><?=$post['name']?></a> on <?=$post['date']?></p>
                 </div>
-                <hr>
             </div>
         </div>
-    <?php endforeach ?>
+    <?endforeach?>
+    <hr>
     <!-- Pager -->
     <ul class="pager">
         <li class="next">
