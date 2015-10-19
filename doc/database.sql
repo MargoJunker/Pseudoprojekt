@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabeli struktuur tabelile `$posts`
+-- Tabeli struktuur tabelile `posts`
 --
 
-CREATE TABLE IF NOT EXISTS `$posts` (
+CREATE TABLE IF NOT EXISTS `posts` (
   `post_id` int(10) unsigned NOT NULL,
   `title` varchar(80) NOT NULL,
   `description` varchar(120) NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE IF NOT EXISTS `$posts` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Andmete tõmmistamine tabelile `$posts`
+-- Andmete tõmmistamine tabelile `posts`
 --
 
-INSERT INTO `$posts` (`post_id`, `title`, `description`, `author_id`, `date`, `content`) VALUES
+INSERT INTO `posts` (`post_id`, `title`, `description`, `author_id`, `date`, `content`) VALUES
 (1, 'Man must explore, and this is exploration at its greatest\r\n    ', 'Problems look mighty small from 150 miles up', 1, '2014-08-24 00:00:00', ''),
 (2, 'I believe every human has a finite number of heartbeats', 'Problems look mighty small from 150 miles up', 1, '2014-08-24 07:34:00', '');
 
@@ -66,9 +66,9 @@ INSERT INTO `authors` (`authors_id`, `name`) VALUES
 --
 
 --
--- Indeksid tabelile `$posts`
+-- Indeksid tabelile `posts`
 --
-ALTER TABLE `$posts`
+ALTER TABLE `posts`
   ADD PRIMARY KEY (`post_id`);
 
 --
@@ -82,9 +82,9 @@ ALTER TABLE `authors`
 --
 
 --
--- AUTO_INCREMENT tabelile `$posts`
+-- AUTO_INCREMENT tabelile `posts`
 --
-ALTER TABLE `$posts`
+ALTER TABLE `posts`
   MODIFY `post_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT tabelile `authors`
