@@ -12,13 +12,13 @@
                 <th>Email</th>
             </tr>
     </table>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js">
+<script type="text/javascript" src="js/jquery.js">
     </script>
 <script type="text/javascript">
-        $.get("api.php",function(data){
-                data=JSON.parse(data);
-                for(var i in data){
-                        var j=data[i];
+        $.get("api.php",function(result){
+                result=JSON.parse(result);
+                for(var i in result){
+                        var j=result[i];
                         $('table').append("<tr><td>"+j[0]+"</td><td>"+j[1]+"</td><td>"+j[2]+"</td></tr>");
                     }
             })
