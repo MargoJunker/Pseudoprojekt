@@ -6,23 +6,36 @@
     <script class="jsbin" src="js/jquery.min.js"></script>
 </head>
 <body>
-<input id="locationName" type="text"/>
+<select style="width: 100px;" id="ilmateade-dropdown">
+    <option selected="selected"></option>
+</select>
 <button onclick="Javascript:getWeather()">Ilmateade</button>
 <p id="weatherReport"></p>
 <script type="text/javascript">
-    function getWeather(){
-        var inputField =document.getElementById('locationName');
-        var inputVal=inputField.value;
-        if(!inputVal){
-            alert("Asukoht");
-            inputField.focus();
-            return false;
-        }
-        else{
-            $.get("http://api.openweathermap.org/data/2.5/weather?q="+inputVal+"&appid=935452dfa4f9ecca6b0d749ae7e84ca4", function (data) {
-                document.getElementById('weatherReport').innerHTML=data.weather[0].description;
-            });
-        }
+    $(document).ready(
+            $.get("http://cors.io/?u=http://openweathermap.org/help/city_list.txt", function (data) {
+                var dataString = data.split("\n");
+                var result = [];
+                var headers = dataString[0].split("\t");
+                for (var i = 1; i < dataString.length - 1; i++) {
+                    var obj = {};
+                    var currentline = dataString[i].split("\t");
+                    obj[headers[1]] = currentline[1];
+                    result.push(obj);
+                }
+                $.each(result, function (index, item) {
+                    $('#ilmateade-dropdown').append(
+                            $('<option></option>').val(item["nm"]).text(item["nm"])
+                    );
+                });
+            })
+    );
+    function getWeather() {
+        var inputField = document.getElementById('ilmateade-dropdown');
+        var inputVal = inputField.value;
+        $.get("http://api.openweathermap.org/data/2.5/weather?q=" + inputVal + "&appid=935452dfa4f9ecca6b0d749ae7e84ca4", function (data) {
+            document.getElementById('weatherReport').innerHTML = data.weather[0].description;
+        });
     }
 </script>
 </body>
