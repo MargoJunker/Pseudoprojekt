@@ -6,30 +6,20 @@
         <script class="jsbin" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="chosen/chosen.jquery.min.js"></script>
         <link type="text/css" rel="stylesheet" href="chosen/chosen.css"/>
-        <style>
-            table,td,tr,th{
-                border: 2px solid gray;
-                border-collapse: collapse;
-                padding:10px;
-            }
-            th{
-                width:200px;
-            }
-        </style>
     </head>
     <body>
+    <script type="text/javascript">
 
+    </script>
     <select style="width: 100px;" id="ilmateade-dropdown" class="chosen">
         <option selected="selected"></option>
     </select>
     <button onclick="Javascript:getWeather()">Ilmateade</button>
     <p id="weatherReport"></p>
-    <table id="ilmaTabel"></table>
     <script type="text/javascript">
-        $(".chosen").chosen({width:"25%"});
         $.get("http://cors.io/?u=http://openweathermap.org/help/city_list.txt", function (data) {
             var dataString = data.split("\n");
-            result = [];
+            var result = [];
             var headers = dataString[0].split("\t");
             for (var i = 1; i < dataString.length - 1; i++) {
                 var obj = {};
@@ -46,29 +36,21 @@
                  result.push(obj);
                  */
             }
-            console.log(result);
             $.each(result, function (index, item) {
+                console.log(item["countryCode"])
                 $('#ilmateade-dropdown').append(
                         $('<option></option>').val(item["nm"]).text(item["nm"])
                 );
-                $('#ilmateade-dropdown').trigger('chosen:updated');
             });
-            for(var i=0; i< result.length;i++){
-                $.get("http://api.openweathermap.org/data/2.5/weather?q=" + result[i].nm + "&appid=935452dfa4f9ecca6b0d749ae7e84ca4", function (data) {
-                    $('#ilmaTabel').append('<tr><td>'+ data.name.toString() +'</td><td>'+data.weather[0].description.toString().toLocaleLowerCase()+'</td></tr>');
-                });
-            }
-
+            $(".chosen").chosen({width:"25%"});
         });
-
         function getWeather() {
             var inputField = document.getElementById('ilmateade-dropdown');
             var inputVal = inputField.value;
             $.get("http://api.openweathermap.org/data/2.5/weather?q=" + inputVal + "&appid=935452dfa4f9ecca6b0d749ae7e84ca4", function (data) {
-                document.getElementById('weatherReport').innerHTML = data.weather[0].description.toString().toLocaleLowerCase();
+                document.getElementById('weatherReport').innerHTML = data.weather[0].description;
             });
         }
-
     </script>
     </body>
-</html>
+    </html>
