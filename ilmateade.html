@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ilmateade</title>
+    <script class="jsbin" src="js/jquery.min.js"></script>
+</head>
+<body>
+<input id="locationName" type="text"/>
+<button onclick="Javascript:getWeather()">Ilmateade</button>
+<p id="weatherReport"></p>
+<script type="text/javascript">
+    function getWeather(){
+        var inputField =document.getElementById('locationName');
+        var inputVal=inputField.value;
+        if(!inputVal){
+            alert("Asukoht");
+            inputField.focus();
+            return false;
+        }
+        else{
+            $.get("http://api.openweathermap.org/data/2.5/weather?q="+inputVal+"&appid=935452dfa4f9ecca6b0d749ae7e84ca4", function (data) {
+                document.getElementById('weatherReport').innerHTML=data.weather[0].description;
+            });
+        }
+    }
+</script>
+</body>
+</html>
