@@ -1,7 +1,8 @@
 <?php
 if(isset($_GET['emailvalidation'])){
     $meil=$_GET['emailvalidation'];
-    if(checkdnsrr(array_pop(explode("@",$meil)),"MX")){
+    $array=explode("@",$meil);
+    if(checkdnsrr(array_pop($array),"MX")){
         exit("Emaili domeen eksisteerib.");
     }
     else{
